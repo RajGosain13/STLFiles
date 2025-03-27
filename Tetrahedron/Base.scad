@@ -1,19 +1,19 @@
-obj_height=.9; // Toggleable
+obj_height=.8; // Toggleable
 slab_height=0.25; 
-obj_width = 18; //adjust to make pretty
+obj_width = 20; //adjust to make pretty
 scale_factor = 1.0 / obj_width;
-rotation = 255; //adjust to make pretty
+rotation = 125; //adjust to make pretty
 filename="All.stl";
 
 
 rotate([63,0,90]) {
     // First Line: Shape Name (Larger Font)
-    translate([-0.95, -0.33, 0.95]) linear_extrude(0.1) 
+    translate([-0.95, -0.33, 0.93]) linear_extrude(0.1) 
     text("Tetrahedron", size=0.1);
 
     // Second Line: Mu Value (Smaller Font)
-    translate([-0.95, -0.45, 0.95]) linear_extrude(0.1) 
-    text("μ = 1.014611", size=0.08);
+    translate([-0.95, -0.45, 0.93]) linear_extrude(0.1) 
+    text("μ = 1.01461187233467", size=0.08);
 }
 rotate([0,0,90])translate([0,-2.08,0])polyhedron(
                points=[[-0.99,0.99,0], [0.99,0.99,0], [0.99,1.09,0], [-0.99,1.09,0], [-0.99,1.09,slab_height], [0.99,1.09,slab_height]],
@@ -21,7 +21,12 @@ rotate([0,0,90])translate([0,-2.08,0])polyhedron(
                );
 // Prints shape base is for
 // color([1, 0, 0, 1]) translate([0,0,obj_height])rotate([0,0,rotation])scale([scale_factor, scale_factor, scale_factor])import(filename);
-        
+
+difference(){translate([0,0,0.4])
+cylinder(h=0.4, r1=0.3, r2=0.3, center=true, $fn=50);
+translate([0,0,obj_height])rotate([0,0,rotation])scale([scale_factor, scale_factor, scale_factor])import(filename);
+}
+
 difference(){translate([-0.99,-0.99,0])
 cube(size=[1.98,1.98,slab_height]);
 translate([0,0,obj_height])rotate([0,0,rotation])scale([scale_factor, scale_factor, scale_factor])import(filename);

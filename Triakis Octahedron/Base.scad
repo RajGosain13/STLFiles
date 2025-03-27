@@ -20,7 +20,7 @@ rotate([0,0,90])translate([0,-2.08,0])polyhedron(
                faces=[[0,1,2,3],[5,4,3,2],[0,4,5,1],[0,3,4],[5,2,1]]
                );
 // Prints shape base is for
-// color([1, 0, 0, 1]) translate([0,0,obj_height])rotate([0,0,rotation])scale([scale_factor, scale_factor, scale_factor])import(filename);
+color([1, 0, 0, 1]) translate([0,0,obj_height])rotate([0,0,rotation])scale([scale_factor, scale_factor, scale_factor])import(filename);
         
 difference(){translate([-0.99,-0.99,0])
 cube(size=[1.98,1.98,slab_height]);
